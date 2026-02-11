@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Kampania SWAY</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #111, #222);
+      color: white;
+      text-align: center;
+    }
+
+    .container {
+      padding: 60px 20px;
+    }
+
+    h1 {
+      font-size: 48px;
+      color: #00ff88;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 28px;
+      color: #00ccff;
+    }
+
+    .box {
+      margin: 30px auto;
+      padding: 20px;
+      max-width: 600px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+
+    .votes {
+      font-size: 40px;
+      color: #ffcc00;
+      margin: 20px 0;
+    }
+
+    .nicki span {
+      display: inline-block;
+      margin: 5px;
+      padding: 8px 12px;
+      background: #333;
+      border-radius: 10px;
+      font-size: 14px;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 12px;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <h1>ZAGŁOSUJ NA MNIE — SWAY</h1>
+    <h2>🔥 Najlepsza kampania szkolna 🔥</h2>
+
+    <div class="box">
+      <p>
+        Skontaktuj się ze mną na Discord:<br>
+        <b>47swayqvs</b>
+      </p>
+    </div>
+
+    <div class="box">
+      <div class="votes">
+        JUŻ MAMY <span id="voteCount">32</span> GŁOSY!
+      </div>
+      <button onclick="addVote()">Dodaj głos</button>
+    </div>
+
+    <div class="box">
+      <h3>SAFE • LEGIT • 100% MEM</h3>
+      <p>(Strona parodiowa — projekt szkolny)</p>
+    </div>
+
+    <div class="box nicki">
+      <h3>Wspierający:</h3>
+      <span>kacper123</span>
+      <span>ola.exe</span>
+      <span>mati_pro</span>
+      <span>ninja77</span>
+      <span>ghostik</span>
+    </div>
+
+    <footer>
+      Projekt humorystyczny do szkoły • Nie jest prawdziwą kampanią
+    </footer>
+
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>
