@@ -1,209 +1,316 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZAGŁOSUJ NA SWAY – 10K NA MIESIĄC</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Courier New', Courier, monospace;
-            background: linear-gradient(135deg, #0d001a, #1a0033, #330066);
-            color: #00ffea;
-            min-height: 100vh;
-            overflow-x: hidden;
-            background-attachment: fixed;
-            position: relative;
-        }
-        .stars {
-            position: fixed;
-            inset: 0;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><circle cx="10" cy="10" r="1" fill="white"/><circle cx="80" cy="20" r="1.2" fill="white"/><circle cx="30" cy="70" r="0.8" fill="white"/></svg>') repeat;
-            opacity: 0.5;
-            pointer-events: none;
-            z-index: 1;
-        }
-        .container {
-            position: relative;
-            z-index: 2;
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 20px;
-            text-align: center;
-        }
-        h1 {
-            font-size: 5.5rem;
-            text-transform: uppercase;
-            letter-spacing: 12px;
-            text-shadow: 0 0 15px #ff00aa, 0 0 30px #ff00aa, 0 0 60px #00ffea;
-            animation: glow 1.8s ease-in-out infinite alternate;
-            margin: 30px 0;
-        }
-        .offer {
-            font-size: 3.2rem;
-            color: #ff0044;
-            text-shadow: 0 0 20px #ff0044, 0 0 40px #ff0044;
-            margin: 40px 0;
-            animation: pulse 1.5s infinite alternate;
-        }
-        .votes {
-            font-size: 4.5rem;
-            color: #00ff00;
-            text-shadow: 0 0 25px #00ff00;
-            margin: 30px 0;
-        }
-        .discord {
-            font-size: 2.6rem;
-            margin: 50px 0;
-        }
-        .discord strong {
-            color: #ffff00;
-            text-shadow: 0 0 15px #ffff00;
-        }
-        .btn {
-            font-size: 3rem;
-            padding: 20px 80px;
-            margin: 40px;
-            background: transparent;
-            border: 5px solid #00ffea;
-            color: #00ffea;
-            text-transform: uppercase;
-            letter-spacing: 6px;
-            cursor: pointer;
-            transition: all 0.4s;
-            box-shadow: 0 0 30px rgba(0, 255, 234, 0.6);
-        }
-        .btn:hover {
-            background: #00ffea;
-            color: #0d001a;
-            box-shadow: 0 0 60px #00ffea;
-            transform: scale(1.08);
-        }
-        .safe-zone {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: 3;
-            overflow: hidden;
-        }
-        .safe-label {
-            position: absolute;
-            font-size: 2.2rem;
-            font-weight: bold;
-            text-shadow: 0 0 15px currentColor;
-            pointer-events: none;
-            transition: opacity 2s;
-            white-space: nowrap;
-        }
-        @keyframes glow {
-            from { text-shadow: 0 0 10px #ff00aa, 0 0 20px #ff00aa, 0 0 40px #00ffea; }
-            to   { text-shadow: 0 0 20px #ff00aa, 0 0 40px #00ffea, 0 0 80px #00ffea; }
-        }
-        @keyframes pulse {
-            from { opacity: 0.7; transform: scale(0.98); }
-            to   { opacity: 1; transform: scale(1.02); }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SWAY 2026 – 10K NA MIESIĄC CZY JESTEŚ GOTÓW?</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=VT323&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background: #0a0015;
+      color: #00ffea;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+      background-image: 
+        radial-gradient(circle at 20% 30%, rgba(255,0,170,0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(0,255,234,0.08) 0%, transparent 50%);
+      background-attachment: fixed;
+    }
+
+    /* Tło gwiazd + glitch efekt */
+    .bg-stars {
+      position: fixed;
+      inset: 0;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><circle cx="10" cy="10" r="1.2" fill="%23ffffff"/><circle cx="180" cy="30" r="0.9" fill="%23ffffff"/><circle cx="40" cy="160" r="1.1" fill="%23ffffff"/></svg>') repeat;
+      opacity: 0.7;
+      animation: drift 120s linear infinite;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    @keyframes drift {
+      from { background-position: 0 0; }
+      to   { background-position: 200px 200px; }
+    }
+
+    .container {
+      position: relative;
+      z-index: 5;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    h1 {
+      font-family: 'VT323', monospace;
+      font-size: clamp(4.5rem, 12vw, 9rem);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #ff00aa;
+      text-shadow: 
+        0 0 10px #ff00aa,
+        0 0 25px #ff00aa,
+        0 0 50px #ff00aa,
+        0 0 100px #00ffea;
+      animation: neon-glow 2.5s ease-in-out infinite alternate, glitch 4s infinite;
+      margin: 1.5rem 0 1rem;
+      line-height: 0.9;
+    }
+
+    .subtitle {
+      font-size: clamp(1.8rem, 5vw, 3.2rem);
+      color: #00ffea;
+      text-shadow: 0 0 15px #00ffea;
+      margin-bottom: 2rem;
+      letter-spacing: 4px;
+    }
+
+    .offer-box {
+      background: rgba(10, 0, 30, 0.65);
+      border: 3px solid #ff00aa;
+      border-radius: 18px;
+      padding: 2.5rem 1.5rem;
+      margin: 2.5rem auto;
+      max-width: 900px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 0 60px rgba(255,0,170,0.4), inset 0 0 30px rgba(0,255,234,0.15);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .offer-text {
+      font-size: clamp(2.4rem, 6vw, 4.5rem);
+      color: #ffff00;
+      text-shadow: 0 0 20px #ffff00, 0 0 40px #ff00aa;
+      line-height: 1.1;
+      animation: pulse-text 3s infinite alternate;
+    }
+
+    .votes-counter {
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 900;
+      color: #00ff00;
+      text-shadow: 0 0 30px #00ff00;
+      margin: 2rem 0;
+      display: inline-block;
+      padding: 0 1.5rem;
+    }
+
+    .discord-info {
+      font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+      margin: 2.5rem 0;
+      line-height: 1.6;
+    }
+
+    .discord-tag {
+      color: #ffff00;
+      font-weight: bold;
+      text-shadow: 0 0 15px #ffff00;
+      background: rgba(255,255,0,0.12);
+      padding: 0.3rem 0.8rem;
+      border-radius: 12px;
+      border: 2px solid #ffff00;
+      display: inline-block;
+    }
+
+    .btn-vote {
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      padding: 1.2rem 4rem;
+      margin: 2.5rem 1rem;
+      background: transparent;
+      border: 4px solid #00ffea;
+      color: #00ffea;
+      font-weight: bold;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.35s;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 0 40px rgba(0,255,234,0.5);
+    }
+
+    .btn-vote:hover {
+      background: #00ffea;
+      color: #0a0015;
+      box-shadow: 0 0 80px #00ffea, 0 0 120px #ff00aa;
+      transform: translateY(-8px) scale(1.05);
+    }
+
+    .btn-vote::after {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -100%;
+      width: 50%;
+      height: 200%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      transition: 0.8s;
+    }
+
+    .btn-vote:hover::after {
+      left: 100%;
+    }
+
+    .safe-zone {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 10;
+      overflow: hidden;
+    }
+
+    .safe-label {
+      position: absolute;
+      font-family: 'VT323', monospace;
+      font-size: clamp(1.6rem, 4vw, 3.2rem);
+      font-weight: bold;
+      padding: 0.4rem 1.2rem;
+      border-radius: 12px;
+      background: rgba(0,0,0,0.4);
+      backdrop-filter: blur(6px);
+      border: 2px solid currentColor;
+      pointer-events: none;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1.2s ease-out;
+    }
+
+    .safe-label.visible {
+      opacity: 0.92;
+      transform: translateY(0);
+    }
+
+    /* Animacje */
+    @keyframes neon-glow {
+      from { text-shadow: 0 0 10px #ff00aa, 0 0 25px #ff00aa, 0 0 50px #00ffea; }
+      to   { text-shadow: 0 0 20px #ff00aa, 0 0 50px #00ffea, 0 0 100px #00ffea; }
+    }
+
+    @keyframes glitch {
+      0%   { transform: translate(0); }
+      20%  { transform: translate(-3px, 3px); }
+      40%  { transform: translate(3px, -3px); }
+      60%  { transform: translate(-2px, 2px); }
+      80%  { transform: translate(2px, -2px); }
+      100% { transform: translate(0); }
+    }
+
+    @keyframes pulse-text {
+      from { transform: scale(1); opacity: 0.85; }
+      to   { transform: scale(1.04); opacity: 1; }
+    }
+
+    @media (max-width: 768px) {
+      .offer-box { padding: 1.8rem 1rem; }
+      .btn-vote  { padding: 1rem 3rem; font-size: 2.4rem; }
+    }
+  </style>
 </head>
 <body>
 
-    <div class="stars"></div>
-    <div class="safe-zone" id="safe-zone"></div>
+  <div class="bg-stars"></div>
+  <div class="safe-zone" id="safeZone"></div>
 
-    <div class="container">
-        <h1>VOTE SWAY</h1>
+  <div class="container">
+    <h1>VOTE SWAY</h1>
+    
+    <div class="subtitle">2026 – TO BĘDZIE NASZ ROK</div>
 
-        <div class="offer" id="offer-text">
-            ZAGŁOSUJ NA MNIE SWAY ZAOFERUJE CI 10K NA MIESIĄC!
-        </div>
-
-        <div class="votes">
-            JUZ MAMY <span id="votes-count">32</span> GŁOSÓW
-        </div>
-
-        <div class="discord">
-            SKONTAKTUJ SIĘ ZE MNĄ NA DISCORD:<br>
-            <strong id="discord-tag">47swayqvs</strong>
-        </div>
-
-        <button class="btn" id="vote-button">ZAGŁOSUJ TERAZ → 10K/mc</button>
-
-        <p style="margin-top: 60px; font-size: 1.6rem; opacity: 0.8;">
-            SAFE • LEGIT • REAL DEAL • NO SCAM • SWAY GANG
-        </p>
+    <div class="offer-box">
+      <div class="offer-text" id="offer">
+        ZAGŁOSUJ NA MNIE<br>SWAY ZAOFERUJE CI<br><span style="color:#ffff00;font-size:1.3em">10 000 zł MIESIĘCZNIE</span>
+      </div>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const votes = 32;
-            const discordTag = "47swayqvs";
-            const safeTexts = [
-                "SAFE 100%",
-                "LEGIT ONLY",
-                "NO SCAM",
-                "TRUSTED",
-                "REAL DEAL",
-                "SWAY GANG",
-                "JOIN & WIN",
-                "100% LEGIT",
-                "SAFE VIBE"
-            ];
+    <div class="votes-counter">
+      JUŻ <span id="votes">32</span> GŁOSÓW
+    </div>
 
-            const votesEl = document.getElementById('votes-count');
-            const discordEl = document.getElementById('discord-tag');
-            const safeZone = document.getElementById('safe-zone');
-            const offerEl = document.getElementById('offer-text');
-            const btn = document.getElementById('vote-button');
+    <div class="discord-info">
+      NAPISZ DO MNIE NATYCHMIAST NA DISCORDZIE<br>
+      <div class="discord-tag" id="discordTag">47swayqvs</div>
+    </div>
 
-            if (votesEl) votesEl.textContent = votes;
-            if (discordEl) discordEl.textContent = discordTag;
+    <button class="btn-vote" id="voteBtn">ZAGŁOSUJ TERAZ → DOSTAJESZ 10K</button>
 
-            // Miganie oferty
-            setInterval(() => {
-                offerEl.style.opacity = offerEl.style.opacity === '0.5' ? '1' : '0.5';
-            }, 900);
+    <p style="margin-top: 4rem; font-size: 1.4rem; opacity: 0.7; letter-spacing: 2px;">
+      SAFE • LEGIT • 100% REAL • NO SCAM • SWAY GANG ONLY
+    </p>
+  </div>
 
-            // Pływające napisy SAFE/LEGIT
-            function spawnSafeLabel() {
-                const label = document.createElement('div');
-                label.className = 'safe-label';
+  <script>
+    const votes = 32;
+    const discord = "47swayqvs";
 
-                const text = safeTexts[Math.floor(Math.random() * safeTexts.length)];
-                const colors = ['#00ffea', '#ff00aa', '#00ff00', '#ffff00', '#ff4444'];
-                const color = colors[Math.floor(Math.random() * colors.length)];
+    // Ustawianie wartości
+    document.getElementById("votes").textContent = votes;
+    document.getElementById("discordTag").textContent = discord;
 
-                label.textContent = text;
-                label.style.color = color;
-                label.style.textShadow = `0 0 12px ${color}, 0 0 25px ${color}`;
-
-                const x = Math.random() * 85 + 7;
-                const y = Math.random() * 85 + 7;
-                label.style.left = x + '%';
-                label.style.top = y + '%';
-
-                safeZone.appendChild(label);
-
-                setTimeout(() => {
-                    label.style.opacity = '0';
-                    setTimeout(() => label.remove(), 2500);
-                }, 3000 + Math.random() * 5000);
-            }
-
-            setInterval(spawnSafeLabel, 800 + Math.random() * 1400);
-
-            // Kliknięcie przycisku → kopiuj discord + memiczny alert
-            btn.addEventListener('click', () => {
-                navigator.clipboard.writeText(discordTag).then(() => {
-                    alert("Skopiowano: " + discordTag + "\nNapisz do mnie → info o 10K/mc 😈");
-                }).catch(() => {
-                    alert("Kopiowanie nie wyszło – wpisz ręcznie: " + discordTag);
-                });
-            });
+    // Kopiowanie Discorda po kliknięciu
+    document.getElementById("voteBtn").addEventListener("click", () => {
+      navigator.clipboard.writeText(discord)
+        .then(() => {
+          alert("Skopiowano: " + discord + "\nNapisz → info o 10K/mc + bonusy 😈");
+        })
+        .catch(() => {
+          alert("Nie udało się skopiować – wpisz ręcznie: " + discord);
         });
-    </script>
+    });
+
+    // Pływające napisy SAFE / LEGIT / itp.
+    const safePhrases = [
+      "SAFE 100%", "LEGIT ONLY", "NO SCAM", "TRUSTED", "REAL DEAL",
+      "SWAY GANG", "JOIN NOW", "100% CZYSZCZONE", "VIBE CHECK",
+      "NIE SCAMUJE", "MONEY INCOMING", "TOP TIER", "GOD MODE"
+    ];
+
+    const colors = ["#00ffea", "#ff00aa", "#ffff00", "#00ff00", "#ff4444", "#aa00ff"];
+
+    function spawnSafe() {
+      const el = document.createElement("div");
+      el.className = "safe-label";
+
+      const text = safePhrases[Math.floor(Math.random() * safePhrases.length)];
+      const color = colors[Math.floor(Math.random() * colors.length)];
+
+      el.textContent = text;
+      el.style.color = color;
+      el.style.borderColor = color;
+      el.style.textShadow = `0 0 12px ${color}, 0 0 25px ${color}`;
+
+      const x = Math.random() * 90 + 5;
+      const y = Math.random() * 85 + 5;
+      el.style.left = x + "%";
+      el.style.top  = y + "%";
+
+      document.getElementById("safeZone").appendChild(el);
+
+      // Pojawienie się i znikanie
+      setTimeout(() => el.classList.add("visible"), 100);
+      setTimeout(() => {
+        el.style.opacity = "0";
+        el.style.transform = "translateY(-80px)";
+        setTimeout(() => el.remove(), 1800);
+      }, 2800 + Math.random() * 4500);
+    }
+
+    // Spawn co jakiś czas
+    setInterval(spawnSafe, 700 + Math.random() * 1400);
+
+    // Pierwszy od razu
+    setTimeout(spawnSafe, 400);
+  </script>
 </body>
 </html>
