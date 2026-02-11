@@ -1,104 +1,205 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <title>Kampania SWAY</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(135deg, #111, #222);
-      color: white;
-      text-align: center;
-    }
-
-    .container {
-      padding: 60px 20px;
-    }
-
-    h1 {
-      font-size: 48px;
-      color: #00ff88;
-      margin-bottom: 10px;
-    }
-
-    h2 {
-      font-size: 28px;
-      color: #00ccff;
-    }
-
-    .box {
-      margin: 30px auto;
-      padding: 20px;
-      max-width: 600px;
-      background: rgba(255,255,255,0.05);
-      border-radius: 15px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.5);
-    }
-
-    .votes {
-      font-size: 40px;
-      color: #ffcc00;
-      margin: 20px 0;
-    }
-
-    .nicki span {
-      display: inline-block;
-      margin: 5px;
-      padding: 8px 12px;
-      background: #333;
-      border-radius: 10px;
-      font-size: 14px;
-    }
-
-    footer {
-      margin-top: 40px;
-      font-size: 12px;
-      color: #aaa;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VOTE SWAY - Najlepszy Kandydat</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background: linear-gradient(45deg, #0f0c29, #302b63, #24243e);
+            color: #00ffea;
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-attachment: fixed;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        h1 {
+            font-size: 6rem;
+            text-transform: uppercase;
+            letter-spacing: 10px;
+            text-shadow: 
+                0 0 10px #00ffea,
+                0 0 20px #00ffea,
+                0 0 40px #ff00aa,
+                0 0 80px #ff00aa;
+            animation: glow 2s ease-in-out infinite alternate;
+            margin: 40px 0;
+        }
+        .vote-btn {
+            font-size: 4rem;
+            padding: 20px 60px;
+            margin: 30px;
+            background: transparent;
+            border: 4px solid #00ffea;
+            color: #00ffea;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            cursor: pointer;
+            transition: all 0.4s;
+            box-shadow: 0 0 20px rgba(0, 255, 234, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        .vote-btn:hover {
+            background: #00ffea;
+            color: #0f0c29;
+            box-shadow: 0 0 40px #00ffea;
+            transform: scale(1.1);
+        }
+        .vote-btn::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -100%;
+            width: 50%;
+            height: 200%;
+            background: linear-gradient(
+                120deg,
+                transparent,
+                rgba(255,255,255,0.3),
+                transparent
+            );
+            transition: 0.7s;
+        }
+        .vote-btn:hover::before {
+            left: 100%;
+        }
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin: 50px 0;
+            flex-wrap: wrap;
+        }
+        .card {
+            background: rgba(0, 0, 0, 0.4);
+            border: 2px solid #ff00aa;
+            padding: 30px;
+            border-radius: 15px;
+            min-width: 280px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 30px rgba(255, 0, 170, 0.3);
+        }
+        .number {
+            font-size: 5rem;
+            font-weight: bold;
+            text-shadow: 0 0 20px #ff00aa;
+        }
+        .discord {
+            margin: 60px 0;
+            font-size: 2.2rem;
+        }
+        .discord a {
+            color: #00ffea;
+            text-decoration: none;
+            border-bottom: 3px solid #00ffea;
+            padding-bottom: 5px;
+            transition: all 0.3s;
+        }
+        .discord a:hover {
+            color: #ff00aa;
+            border-color: #ff00aa;
+        }
+        .glitch {
+            position: relative;
+        }
+        .glitch::before,
+        .glitch::after {
+            content: "VOTE SWAY";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.8;
+        }
+        .glitch::before {
+            left: 2px;
+            text-shadow: -2px 0 #ff00aa;
+            animation: glitch-1 4s infinite linear alternate-reverse;
+        }
+        .glitch::after {
+            left: -2px;
+            text-shadow: 2px 0 #00ffea;
+            animation: glitch-2 3s infinite linear alternate-reverse;
+        }
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #00ffea, 0 0 20px #00ffea, 0 0 40px #ff00aa; }
+            to   { text-shadow: 0 0 20px #00ffea, 0 0 40px #ff00aa, 0 0 80px #ff00aa; }
+        }
+        @keyframes glitch-1 {
+            0%   { clip: rect(42px, 9999px, 44px, 0); transform: skew(0.6deg); }
+            5%   { clip: rect(17px, 9999px, 94px, 0); transform: skew(0.4deg); }
+            10%  { clip: rect(85px, 9999px, 120px, 0); transform: skew(0.8deg); }
+            100% { clip: rect(65px, 9999px, 119px, 0); transform: skew(0.2deg); }
+        }
+        @keyframes glitch-2 {
+            0%   { clip: rect(65px, 9999px, 119px, 0); transform: skew(0.8deg); }
+            20%  { clip: rect(25px, 9999px, 150px, 0); transform: skew(0.3deg); }
+            100% { clip: rect(95px, 9999px, 140px, 0); transform: skew(0.3deg); }
+        }
+        .stars {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><circle cx="10" cy="10" r="1" fill="white"/><circle cx="30" cy="70" r="1.5" fill="white"/><circle cx="80" cy="20" r="1" fill="white"/><circle cx="60" cy="90" r="0.8" fill="white"/></svg>') repeat;
+            opacity: 0.6;
+        }
+    </style>
 </head>
 <body>
 
-  <div class="container">
+    <div class="stars"></div>
 
-    <h1>ZAGŁOSUJ NA MNIE — SWAY</h1>
-    <h2>🔥 Najlepsza kampania szkolna 🔥</h2>
+    <div class="container">
+        <h1 class="glitch">VOTE SWAY</h1>
+        
+        <p style="font-size: 2.5rem; margin: 20px 0; opacity: 0.9;">
+            TOP CANDIDATE • GAMING VIBE • NEXT LEVEL SCHOOL
+        </p>
 
-    <div class="box">
-      <p>
-        Skontaktuj się ze mną na Discord:<br>
-        <b>47swayqvs</b>
-      </p>
+        <div class="stats">
+            <div class="card">
+                <div class="number">133</div>
+                <p style="font-size: 1.8rem; margin-top: 10px;">GŁOSÓW</p>
+            </div>
+            
+            <div class="card">
+                <div class="number">#1</div>
+                <p style="font-size: 1.8rem; margin-top: 10px;">KANDYDAT</p>
+            </div>
+        </div>
+
+        <button class="vote-btn">VOTE SWAY</button>
+
+        <div class="discord">
+            Dołącz do ekipy → <a href="https://discord.gg/xxxxxx" target="_blank">discord.gg/SWAY</a>
+            <br>
+            <span style="font-size: 1.4rem; opacity: 0.8; margin-top: 10px; display: inline-block;">
+                SWAY#1337
+            </span>
+        </div>
+
+        <p style="margin-top: 60px; opacity: 0.7; font-size: 1.3rem;">
+            VOTE FOR THE VIBE • VOTE FOR THE CHANGE • VOTE SWAY 2026
+        </p>
     </div>
 
-    <div class="box">
-      <div class="votes">
-        JUŻ MAMY <span id="voteCount">32</span> GŁOSY!
-      </div>
-      <button onclick="addVote()">Dodaj głos</button>
-    </div>
-
-    <div class="box">
-      <h3>SAFE • LEGIT • 100% MEM</h3>
-      <p>(Strona parodiowa — projekt szkolny)</p>
-    </div>
-
-    <div class="box nicki">
-      <h3>Wspierający:</h3>
-      <span>kacper123</span>
-      <span>ola.exe</span>
-      <span>mati_pro</span>
-      <span>ninja77</span>
-      <span>ghostik</span>
-    </div>
-
-    <footer>
-      NIE SA TO WSZYSTKIE GLOSY ZAPRASZAM DISCORD: 47swayqvs!
-    </footer>
-
-  </div>
-
-  <script src="index.js"></script>
 </body>
 </html>
